@@ -79,5 +79,8 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   },
-  "packageManager": "yarn@4.9.2"
+  "packageManager": "yarn@4.9.2",
+  "resolutions": {
+    "brace-expansion": "^1.1.11"
+  }
 }
