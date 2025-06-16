@@ -20,4 +20,7 @@ export class Survey {
 
   @Column()
   action: string
+
+  @Column({ type: 'boolean', default: true })
+  isAgrreed: boolean
 }

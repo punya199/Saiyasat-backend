@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator'
+import { IsBoolean, IsString } from 'class-validator'
 
 export class CreateSurveyDto {
   @IsString()
@@ -15,4 +15,7 @@ export class CreateSurveyDto {
 
   @IsString()
   action: string
+
+  @IsBoolean()
+  isAgrreed: boolean
 }
