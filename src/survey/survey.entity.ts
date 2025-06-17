@@ -1,5 +1,12 @@
 // src/survey/survey.entity.ts
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm'
 
 @Entity()
 export class Survey {
@@ -23,4 +30,13 @@ export class Survey {
 
   @Column({ type: 'boolean', default: true })
   isAgrreed: boolean
+
+  @CreateDateColumn({ type: 'timestamp with time zone' })
+  createdAt: Date
+
+  @UpdateDateColumn({ type: 'timestamp with time zone' })
+  updatedAt: Date
+
+  @DeleteDateColumn({ type: 'timestamp with time zone' })
+  deletedAt: Date
 }

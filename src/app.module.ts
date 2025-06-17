@@ -22,6 +22,7 @@ import { SurveyModule } from './survey/survey.module'
       ssl: appConfig.DATABASE_SSL ? { rejectUnauthorized: false } : false,
       entities: [Survey],
       synchronize: true,
+      logging: 'all',
     }),
     SurveyModule,
   ],
