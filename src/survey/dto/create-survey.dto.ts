@@ -17,5 +17,8 @@ export class CreateSurveyDto {
   action: string
 
   @IsBoolean()
-  isAgrreed: boolean
+  isAgreed: boolean
+
+  @IsString()
+  uid: string
 }

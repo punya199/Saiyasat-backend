@@ -29,7 +29,7 @@ export class Survey {
   action: string
 
   @Column({ type: 'boolean', default: true })
-  isAgrreed: boolean
+  isAgreed: boolean
 
   @CreateDateColumn({ type: 'timestamp with time zone' })
   createdAt: Date
@@ -39,4 +39,7 @@ export class Survey {
 
   @DeleteDateColumn({ type: 'timestamp with time zone' })
   deletedAt: Date
+
+  @Column({ type: 'varchar', nullable: true })
+  uid: string
 }
