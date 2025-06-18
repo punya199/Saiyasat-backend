@@ -21,7 +21,10 @@ import { SurveyModule } from './survey/survey.module'
       database: appConfig.DATABASE_NAME,
       ssl: appConfig.DATABASE_SSL ? { rejectUnauthorized: false } : false,
       entities: [Survey],
-      synchronize: true,
+      migrations: ['dist/migrations/*.js'], // Use compiled JS files in production
+      migrationsTableName: 'migrations',
+      synchronize: false, // Disabled for production - use migrations instead
+      migrationsRun: false, // Don't auto-run migrations
       logging: 'all',
       uuidExtension: 'pgcrypto',
     }),
