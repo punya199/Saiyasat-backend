@@ -23,6 +23,7 @@ import { SurveyModule } from './survey/survey.module'
       entities: [Survey],
       synchronize: true,
       logging: 'all',
+      uuidExtension: 'pgcrypto',
     }),
     SurveyModule,
   ],

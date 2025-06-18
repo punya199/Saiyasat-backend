@@ -10,8 +10,8 @@ import {
 
 @Entity()
 export class Survey {
-  @PrimaryGeneratedColumn()
-  id: number
+  @PrimaryGeneratedColumn('uuid')
+  id: string
 
   @Column()
   country: string
