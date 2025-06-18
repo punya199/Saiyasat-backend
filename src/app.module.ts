@@ -2,6 +2,7 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
+import { LoggerModule } from 'nestjs-pino'
 import appConfig, { validationSchema } from './config/app-config'
 import { Survey } from './survey/survey.entity'
 import { SurveyModule } from './survey/survey.module'
@@ -11,6 +12,25 @@ import { SurveyModule } from './survey/survey.module'
     ConfigModule.forRoot({
       isGlobal: true, // ทำให้ config ใช้ได้ทั่วทั้งแอป
       validationSchema: validationSchema, // ใช้ schema สำหรับ validate config
+    }),
+    LoggerModule.forRoot({
+      pinoHttp: {
+        transport:
+          process.env.NODE_ENV !== 'production'
+            ? {
+                target: 'pino-pretty',
+                options: {
+                  singleLine: true,
+                  colorize: true,
+                  translateTime: 'UTC:yyyy-mm-dd HH:MM:ss.l',
+                  ignore: 'pid,hostname',
+                },
+              }
+            : undefined,
+        level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+        autoLogging: true,
+        redact: ['req.headers.authorization'],
+      },
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
