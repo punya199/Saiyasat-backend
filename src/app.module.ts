@@ -28,22 +28,22 @@ import { SurveyModule } from './survey/survey.module'
               }
             : undefined,
         level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
-        autoLogging: {
-          ignore: req => {
-            // Ignore health check requests
-            const url = req.url
-            if (!url) return false
+        // autoLogging: {
+        //   ignore: req => {
+        //     // Ignore health check requests
+        //     const url = req.url
+        //     if (!url) return false
 
-            return (
-              url === '/health' ||
-              url === '/health/' ||
-              url.startsWith('/health?') ||
-              url === '/api/health' ||
-              url === '/api/health/' ||
-              url.startsWith('/api/health?')
-            )
-          },
-        },
+        //     return (
+        //       url === '/health' ||
+        //       url === '/health/' ||
+        //       url.startsWith('/health?') ||
+        //       url === '/api/health' ||
+        //       url === '/api/health/' ||
+        //       url.startsWith('/api/health?')
+        //     )
+        //   },
+        // },
         redact: ['req.headers.authorization'],
       },
     }),
