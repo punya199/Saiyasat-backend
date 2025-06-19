@@ -3,6 +3,8 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { LoggerModule } from 'nestjs-pino'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
 import appConfig, { validationSchema } from './config/app-config'
 import { Survey } from './survey/survey.entity'
 import { SurveyModule } from './survey/survey.module'
@@ -65,5 +67,7 @@ import { SurveyModule } from './survey/survey.module'
     }),
     SurveyModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
