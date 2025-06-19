@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { Logger } from 'nestjs-pino'
 import { AppModule } from './app.module'
+import appConfig from './config/app-config'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -17,8 +18,8 @@ async function bootstrap() {
 
   const logger = app.get(Logger)
 
-  await app.listen(3000)
-  logger.log('Application is running on: http://localhost:3000', 'Bootstrap')
+  await app.listen(appConfig.PORT)
+  logger.log(`Application is running on: http://localhost:${appConfig.PORT}`, 'Bootstrap')
 }
 
 void bootstrap()

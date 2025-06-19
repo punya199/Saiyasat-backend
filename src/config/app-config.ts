@@ -5,6 +5,8 @@ process.env.POSTGRES_DATABASE_VERSION = process.env.AWS_XRAY_POSTGRES_DATABASE_V
 process.env.POSTGRES_DRIVER_VERSION = process.env.AWS_XRAY_POSTGRES_DRIVER_VERSION
 
 export const appConfig = {
+  PORT: +(process.env.PORT || 3000),
+
   DATABASE_HOST: process.env.DATABASE_HOST,
   DATABASE_USER: process.env.DATABASE_USER,
   DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
@@ -17,6 +19,7 @@ type IConfigKey = keyof typeof appConfig
 type IJoiObject = { [p in IConfigKey]: Joi.Schema<unknown> }
 
 const joiObject: IJoiObject = {
+  PORT: Joi.number().optional().default(3000).description('Port number'),
   DATABASE_HOST: Joi.string().required().description('Database host'),
   DATABASE_USER: Joi.string().required().description('Database user'),
   DATABASE_PASSWORD: Joi.string().required().description('Database password'),
